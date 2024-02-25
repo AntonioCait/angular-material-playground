@@ -1,0 +1,45 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidenav-container {
+  height: calc(100% - 64px);
+  width: 100%;
+}
+
+.mat-sidenav {
+  /* background: #000; */
+  /* media query mobile and tablet */
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.sidenav-links-container {
+  width: 300px;
+  height: max-content;
+  padding: 30px 0;
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  /* angular material icon inside a div*/
+  /* .link-icon {
+    color: #f2f39d;
+  } */
+  .link-text {
+    padding: 0 10px;
+    margin: 0;
+    font-size: 1.1em;
+  }
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}

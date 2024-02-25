@@ -1,0 +1,34 @@
+<mat-toolbar class="mat-elevation-z3" color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="toolbar-title">
+    <button mat-stroked-button>
+      Nancer System
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" closed>
+    <mat-nav-list class="sidenav-links-container">
+      @for (link of routes; track link.name) {
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="link.path" routerLinkActive="active">
+        <div class="link-container">
+          <div class="link-icon">
+            <mat-icon color="accent">
+              {{link.matIcon}}
+            </mat-icon>
+          </div>
+          <span class="link-text">{{link.name}}</span>
+        </div>
+      </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

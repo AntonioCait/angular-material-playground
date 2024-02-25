@@ -1,0 +1,30 @@
+<mat-card class="dashboard-home">
+  <mat-card-title>Welcome to Your Finance Dashboard</mat-card-title>
+  <div class="summary">
+    @for (metric of metrics; track $index) {
+    <mat-card class="metric">
+      <div>
+        <span class="label">{{ metric.label }}</span>
+        <span class="value">{{ metric.value }}</span>
+      </div>
+    </mat-card>
+    }
+  </div>
+  <mat-card class="recent-transactions">
+    <mat-card-title>Recent Transactions</mat-card-title>
+    <mat-list>
+      <!-- <mat-list-item *ngFor="let transaction of transactions">
+        {{transaction.description}} - {{transaction.amount}}
+      </mat-list-item> -->
+      @for (transaction of transactions; track $index) {
+      <mat-list-item>
+        {{ transaction.description }} - {{ transaction.amount }}
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card>
+  <div class="actions">
+    <button mat-raised-button color="primary">Add Transaction</button>
+    <button mat-raised-button color="accent">View Reports</button>
+  </div>
+</mat-card>

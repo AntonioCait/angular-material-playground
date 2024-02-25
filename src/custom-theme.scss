@@ -1,0 +1,56 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// Define a simple palette for the minimal theme using Material Design palettes.
+// Choosing a monochromatic scheme for simplicity.
+$minimal-primary: mat.define-palette(mat.$grey-palette, 300); // Light grey for primary
+$minimal-accent: mat.define-palette(mat.$blue-grey-palette, 400); // Subtle blue-grey for accent
+$minimal-warn: mat.define-palette(mat.$red-palette, 600); // Muted red for warnings
+
+// Define a very light grey palette for background to keep the theme clean and minimal.
+$minimal-background: mat.define-palette(mat.$grey-palette, 50);
+
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$minimal-theme: mat.define-light-theme((
+  color: (
+    primary: $minimal-primary,
+    accent: $minimal-accent,
+    warn: $minimal-warn,
+    background: $minimal-background,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Inter, sans-serif',
+
+  ),
+  density: 0,
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($minimal-theme);
+
+.mat-sidenav-content {
+  background-color: mat.get-color-from-palette($minimal-background, 100);
+}
+
+
+
+
+
+
+
+
