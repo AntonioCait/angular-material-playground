@@ -18,7 +18,10 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './data.component.css'
 })
 export class DataComponent {
+  // Define the columns to display in the table
   displayedColumns: string[] = ['position', 'name', 'delete'];
+  
+  // Define the data to display in the table
   dataSource = [
     {
       position: 1,
@@ -34,12 +37,18 @@ export class DataComponent {
     }
   ];
 
+  // Add a new data object to the dataSource array
   addData() {
-    const newPosition = this.dataSource.length + 1;
+    // Find the highest position number in the current dataSource
+    const highestPosition = this.dataSource.reduce((max, item) => Math.max(max, item.position), 0);
+    // Increment the highest position to get a new unique position
+    const newPosition = highestPosition + 1;
+    // Create a new data object with the new position and a generated name
     const newData = {position: newPosition, name: `Data ${newPosition}`};
-
-    // Create a new array with the new data and assign it to dataSource
+  
+    // Add the new data object to the dataSource array
     this.dataSource = [...this.dataSource, newData];
+    // Log action to console for debugging
     console.log('Add data button clicked');
   }
 
